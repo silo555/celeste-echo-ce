@@ -8,6 +8,10 @@ Practice one Celeste Classic room at a time on a TI-84 Plus CE. Pick a room, cha
 
 The selector opens every time you launch the app. All 31 rooms are listed on the left. Move the highlight with Up and Down; the right side shows that room's preview and saved PB. Press Enter or 2nd to play. A successful finish automatically restarts the selected room.
 
+![Selector layout](docs/selector-preview@2x.png)
+
+*Layout preview rendered by the host integration tests, not an emulator capture. Native header glyphs are approximated; list text, map pixels, placement and PB values come from the app's draw calls.*
+
 During play, a small timer stays in the upper left. Finishing a room briefly shows your difference from its previous PB: green `-0.500s` for a faster finish, or red `+0.333s` for a slower one. A tie is red `+0.000s`. Your first finish establishes the PB.
 
 ## Install

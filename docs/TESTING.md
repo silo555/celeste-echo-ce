@@ -1,5 +1,19 @@
 # Verification
 
+## Passing build
+
+Verified on 2026-10-27: [native CI run 40615801443](https://github.com/silo555/celeste-echo-ce/actions/runs/40615801443), source revision `c48cb7c7fee626f4f7dc05107917f1f3e0dfefe3`. The run regenerated graphics, passed both host test suites, compiled with official CEdev v11.2, verified original physics/data and packaged the app. [Machine-readable test results](test-results.json) and [binary verification](binary-verification.json) are included.
+
+The program is 24,307 bytes. SHA256:
+
+```text
+48f5e90272d94e5706a2e46c2a5aca98da4e407ced57df28378374c783406a17
+```
+
+The preceding native build produced the same executable. The final change between those runs corrected the host preview's emulation of FontLibC's 24-bit row addressing; calculator font data was not changed.
+
+## Automated checks
+
 The automated workflow records the toolchain version and runs these checks before packaging:
 
 - Native C++ state tests: all 31 selections, wraparound, menu time exclusion, first/faster/slower/tied PBs, prior-PB comparison, reset and automatic loop state, exact 30-tick popup, independent rooms and summit, save roundtrip, every single-bit corruption, truncated payloads and generation wrap.

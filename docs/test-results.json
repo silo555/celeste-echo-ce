@@ -1,0 +1,12 @@
+[
+  {
+    "test": "echo_state_test",
+    "passed": true,
+    "output": "PASS all 31 rooms, wraparound, and no menu time\nPASS first/faster/slower/tied PB, comparison before replacement, loop/reset and 30-tick popup\nPASS summit, independent rooms, save roundtrip, every single-bit corruption, truncation and serial wrap\n"
+  },
+  {
+    "test": "practice_integration_test",
+    "passed": true,
+    "output": "PASS actual startup latch, all-room selector layout/PB, safe room loop, retries, first/faster/slower/tied HUD and 30-tick expiry\nPASS no flash writes between attempts; Graph opens selector and archives records\nPASS actual isolated AppVars, archived PB reboot, partial write/archive/open failure, retry and corrupt-newest recovery\nPASS starting and completing every room including summit loops the selected room without archive stalls\n"
+  }
+]

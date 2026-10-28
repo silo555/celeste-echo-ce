@@ -1,0 +1,19 @@
+CEleste Echo v0.1.0
+
+A separate TI-84 Plus CE practice program: CECHO.
+
+All 31 rooms appear in the startup selector. Highlight a room to see its preview
+and PB, then press Enter/2nd to play. The same room loops after each finish.
+Green minus/red plus results compare each finish against that room's previous
+PB for about one second. Enter retries; Graph/Window returns to the selector.
+The app uses its own archived PB files and a mint/purple mountain-loop icon.
+
+Download CEleste-Echo-install.zip, extract it, and send CECHO.8xp plus clibs.8xg
+with TI Connect CE. Use your existing compatible assembly launcher.
+
+PBs are saved when returning to the selector or quitting, not between attempts.
+Milliseconds follow the original 30 Hz simulation; movement code is unchanged.
+
+Native eZ80 build, host controller/save/HUD tests, binary integrity and original
+physics checks passed. Calculator/emulator play-testing has not been performed.
+See README.md and docs/ for controls, builds, save format and test evidence.
