@@ -37,7 +37,9 @@ static void glyph(char letter) {
     unsigned bitmap=read16(font+read24(font+7)+index*2);
     unsigned scale=graphics_font?2:1;
     for(unsigned y=0;y<font[1];++y) for(unsigned x=0;x<width;++x) {
-        if(font[bitmap+y] & (128u>>x)) for(unsigned sx=0;sx<scale;++sx) pixel(cx+x*scale+sx,cy+y,fg);
+        // FontLibC loads a little-endian 24-bit row and shifts its high byte.
+        // Stored bitmap offsets therefore point two bytes before row data.
+        if(font[bitmap+2+y] & (128u>>x)) for(unsigned sx=0;sx<scale;++sx) pixel(cx+x*scale+sx,cy+y,fg);
     }
     cx+=graphics_font?8:width;
 }
@@ -122,6 +124,9 @@ static void screenshot() {
     fclose(file);
 }
 int main() {
+    unsigned zero_bitmap=read16(font+read24(font+7)+('0'-font[3])*2);
+    const uint8_t zero_rows[]={0x70,0x50,0x50,0x50,0x70};
+    assert(!memcmp(font+zero_bitmap+2,zero_rows,sizeof zero_rows));
     keys[kb_KeyEnter]=true;practice_init();practice_controls();assert(echo_state.menu && loaded.empty());
     release();press(kb_KeyUp);assert(echo_state.selected==30);release();press(kb_KeyDown);assert(echo_state.selected==0);
     release();echo_state.selected=11;press(kb_KeyEnter);assert(!echo_state.menu && !menu_mode && loaded.back()==11);
