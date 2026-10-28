@@ -22,9 +22,10 @@ palette = [(0,0,0),(29,43,83),(126,37,83),(0,135,81),(171,82,54),(95,87,79),(194
            (255,0,77),(255,163,0),(255,236,39),(0,228,54),(41,173,255),(131,118,156),(255,119,168),(255,204,170)]
 lookup = {rgb:index*17 for index,rgb in enumerate(palette)}
 atlas = Image.open(ROOT/'src/gfx/atlas.png').convert('RGB')
-data = b''.join(bytes([8,8]+[lookup[atlas.getpixel((tx*8+x,ty*8+y))] for y in range(8) for x in range(8)])
-                for ty in range(8) for tx in range(16))
-assert data in binary, 'Linked atlas differs from the source pixels'
+for ty in range(8):
+    for tx in range(16):
+        tile = bytes([8,8]+[lookup[atlas.getpixel((tx*8+x,ty*8+y))] for y in range(8) for x in range(8)])
+        assert tile in binary, f'Linked atlas tile {tx+16*ty} differs from source pixels'
 program = (ROOT/'bin/CECHO.8xp').read_bytes()
 assert program[:8] == b'**TI83F*'
 assert len(program) == 57 + struct.unpack_from('<H',program,53)[0]

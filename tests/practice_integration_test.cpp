@@ -11,6 +11,7 @@
 #include <vector>
 #include "graphx.h"
 #include "keypadc.h"
+#include "atlas.h"
 #include "atlas.c"
 #include "room_data.h"
 
