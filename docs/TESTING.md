@@ -7,10 +7,10 @@ Verified on 2026-10-27: [native CI run 40615801443](https://github.com/silo555/c
 The program is 24,307 bytes. SHA256:
 
 ```text
-48f5e90272d94e5706a2e46c2a5aca98da4e407ced57df28378374c783406a17
+354b62c544721b2e83fe7fe03552f4f9048915f61b02ce5e94501fcb522c2abd
 ```
 
-The preceding native build produced the same executable. The final change between those runs corrected the host preview's emulation of FontLibC's 24-bit row addressing; calculator font data was not changed.
+The final test change corrected the host preview's emulation of FontLibC's 24-bit row addressing; calculator font data was not changed. The checksum above identifies the final downloaded build.
 
 ## Automated checks
 
